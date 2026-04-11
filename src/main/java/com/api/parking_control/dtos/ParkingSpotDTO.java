@@ -7,7 +7,6 @@ public record ParkingSpotDTO(
     @NotBlank String block,
     @NotBlank String parkingSpotNumber,
     @NotBlank String responsibleName,
-    @NotNull CarDTO car,
-    String status
+    @NotNull CarDTO car
     )
 {}
