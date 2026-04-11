@@ -6,6 +6,7 @@ import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -23,6 +24,7 @@ public class LicensePlateValidationTests {
     }
 
     @Test
+    @Tag("Validacao")
     @DisplayName("tem que aceitar placa no formato antigo (ABC-1234")
     void deveAceitarPlacaAntiga() {
         CarDTO dto = new CarDTO("ABC-1234", "Civic", "Prata");
@@ -33,7 +35,8 @@ public class LicensePlateValidationTests {
     }
 
     @Test
-    @DisplayName("tem que aceitar placa no formato Mercosul (BRA1E23")
+    @Tag("Validacao")
+    @DisplayName("tem que aceitar placa no formato Mercosul (BRA1E23)")
     void deveAceitarPlacaMercosul() {
         CarDTO dto = new CarDTO("BRA1E23", "Civic", "Prata");
 
@@ -43,6 +46,7 @@ public class LicensePlateValidationTests {
     }
 
     @Test
+    @Tag("Validacao")
     @DisplayName("tem que rejeitar placa invalida")
     void deveRejeitarPlacaInvalida() {
         CarDTO dto = new CarDTO("NAO-SEIU", "Civic", "Prata");
