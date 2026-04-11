@@ -1,0 +1,11 @@
+services:
+  mysql:
+    container_name: 'guide-mysql'
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=parking-control-db'
+      - 'MYSQL_PASSWORD=180422@'
+      - 'MYSQL_ROOT_PASSWORD=180422@'
+      - 'MYSQL_USER=myuser'
+    ports:
+      - '3306:3306'
