@@ -34,10 +34,7 @@ public class    ParkingSpotService {
         if(existsByCarPlateCar(parkingSpotDTO.car().plateCar())){
             return null;
         }
-        if(existsByParkingSpotNumber(parkingSpotDTO.parkingSpotNumber())){
-            return null;
-        }
-        if(existsByBlock(parkingSpotDTO.block())){
+        if(existsByParkingSpot(parkingSpotDTO.block(), parkingSpotDTO.parkingSpotNumber())){
             return null;
         }
 
@@ -57,12 +54,8 @@ public class    ParkingSpotService {
         return parkingSpotRepository.existsByCarPlateCar(licensePlateCar);
     }
 
-    public boolean existsByParkingSpotNumber(@NotBlank String spotNumber) {
-        return parkingSpotRepository.existsByParkingSpotNumber(spotNumber);
-    }
-
-    public boolean existsByBlock(@NotBlank String blockSpotId) {
-        return parkingSpotRepository.existsByBlock(blockSpotId);
+    public boolean existsByParkingSpot(@NotBlank String block, @NotBlank String spotNumber) {
+        return parkingSpotRepository.existsByBlockAndParkingSpotNumber(block, spotNumber);
     }
 
     public List<ParkingSpotDTO> findAll() {
@@ -93,6 +86,13 @@ public class    ParkingSpotService {
     }
 
     public Object getSpotNumber(String spotNumber) {
-        return parkingSpotMapper.toDTO(parkingSpotRepository.findByParkingSpotNumber(spotNumber));
+        String[] parkingSpotParts = spotNumber.split("-");
+        if (parkingSpotParts.length != 2) {
+            return null;
+        }
+
+        return parkingSpotMapper.toDTO(
+                parkingSpotRepository.findByBlockAndParkingSpotNumber(parkingSpotParts[0], parkingSpotParts[1])
+        );
     }
 }

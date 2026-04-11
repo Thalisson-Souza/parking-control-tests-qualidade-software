@@ -12,7 +12,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "plateCar", nullable = false)
+    @Column(name = "plateCar", nullable = false, unique = true)
     @NotNull
     private String plateCar;
 
