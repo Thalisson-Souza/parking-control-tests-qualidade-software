@@ -1,4 +1,4 @@
-package com.api.parking_control;
+package com.api.parking_control.validationsTests;
 
 import com.api.parking_control.dtos.CarDTO;
 import jakarta.validation.ConstraintViolation;

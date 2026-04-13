@@ -1,4 +1,4 @@
-package com.api.parking_control;
+package com.api.parking_control.applicationsTest;
 
 import com.api.parking_control.dtos.ParkingSpotDTO;
 import com.api.parking_control.services.ParkingSpotService;
